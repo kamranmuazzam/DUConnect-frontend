@@ -57,7 +57,7 @@ const LeftBar = () => {
         <div className="menu">
           <span>Your shortcuts</span>
           {/* Link to Events page */}
-          <Link to="/events" className="item">
+          <Link to="/event" className="item">
             <img src={Events} alt="" />
             <span>Events</span>
           </Link>

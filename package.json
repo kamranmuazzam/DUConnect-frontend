@@ -1,7 +1,7 @@
 {
   "name": "youtube2022-react-social-ui",
   "version": "1.0.0",
-  "description": "",
+  "desc ription": "",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",

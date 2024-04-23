@@ -23,6 +23,7 @@ import Article from "./pages/article/Article";
 import Settings from "./pages/settings/Settings";
 import Terms from "./pages/terms/Terms";
 import Notification from "./pages/notification/Notification";
+import Event from "./pages/event/event";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -68,24 +69,28 @@ function App() {
           element: <Profile />,
         },
         {
-          path: "/blood-donation", // Define route for BloodDonation
+          path: "/blood-donation",
           element: <BloodDonation />,
         },
         {
-          path: "/article", // Define route for BloodDonation
+          path: "/article",
           element: <Article />,
         },
         {
-          path: "/settings", // Define route for BloodDonation
+          path: "/settings",
           element: <Settings />,
         },
         {
-          path: "/terms", // Define route for BloodDonation
+          path: "/terms",
           element: <Terms />,
         },
         {
-          path: "/notification", // Define route for BloodDonation
+          path: "/notification",
           element: <Notification />,
+        },
+        {
+          path: "/event",
+          element: <Event />,
         },
       ],
     },
