@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Post from "../post/Post";
 import "./posts.scss";
 
-const Posts = () => {
+const Posts = (props) => {
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -31,11 +31,8 @@ const Posts = () => {
       desc: "Tenetur iste voluptates dolorem rem commodi voluptate pariatur, voluptatum, laboriosam consequatur enim nostrum cumque! Maiores a nam non adipisci minima modi tempore.",
     },
   ]);
-
-  // Function to add a new post
-  const addPost = (newPost) => {
-    setPosts([...posts, newPost]);
-  };
+  
+  props.setPosts(posts)
 
   return (
     <div className="posts">
