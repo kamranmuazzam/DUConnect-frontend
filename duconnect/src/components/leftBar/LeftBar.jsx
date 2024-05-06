@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
- import "./leftBar.scss";
+import { Link } from "react-router-dom";
+import "./leftBar.scss";
 import Home from "../../assets/1.png";
 import Notifications from "../../assets/2.png";
-import Market from "../../assets/3.png";
-import Watch from "../../assets/4.png";
+import Settings from "../../assets/3.png";
+import Profile from "../../assets/4.png";
 import Memories from "../../assets/5.png";
 import Events from "../../assets/6.png";
 import Gaming from "../../assets/7.png";
@@ -16,9 +16,73 @@ import { AuthContext } from "../../context/authContext";
 import { useContext } from "react";
 
 const LeftBar = () => {
-
   const { currentUser } = useContext(AuthContext);
-
+  const mainTray = [
+    {
+      name: "Home",
+      to: "/",
+      src: Home,
+    },
+    {
+      name: "Notification",
+      to: "/notification",
+      src: Notifications,
+    },
+    {
+      name: "Settings",
+      to: "/settings",
+      src: Settings,
+    },
+    {
+      name: "Profile",
+      to: "/profile",
+      src: Profile,
+    },
+    {
+      name: "Terms and Conditions",
+      to: "/terms",
+      src: Memories,
+    },
+  ];
+  const shortcutTray = [
+    {
+      name: "Events",
+      to: "/event",
+      src: Events,
+    },
+    {
+      name: "Blood Donations",
+      to: "/blood-donation",
+      src: Gaming,
+    },
+    {
+      name: "Articles",
+      to: "/article",
+      src: Gallery,
+    },
+  ];
+  const othersTray = [
+    {
+      name: "Fundraiser",
+      to: "/fundraiser",
+      src: Fund,
+    },
+    {
+      name: "Tutorials",
+      to: "/tutorials",
+      src: Tutorials,
+    },
+    {
+      name: "Courses",
+      to: "/courses",
+      src: Courses,
+    },
+  ];
+  const entireTray = [
+    { name: "", elements: mainTray },
+    { name: "Your shortcuts", elements: shortcutTray },
+    { name: "Others", elements: othersTray },
+  ];
   return (
     <div className="leftBar">
       <div className="container">
@@ -27,70 +91,21 @@ const LeftBar = () => {
             <img src={currentUser.profilePic} alt="" />
             <span>{currentUser.name}</span>
           </div>
-          {/* Link to Home page */}
-          <Link to="/" className="item">
-            <img src={Home} alt="" />
-            <span>Home</span>
-          </Link>
-          {/* Link to Notifications page */}
-          <Link to="/notification" className="item">
-            <img src={Notifications} alt="" />
-            <span>Notifications</span>
-          </Link>
-          {/* Link to Settings page */}
-          <Link to="/settings" className="item">
-            <img src={Market} alt="" />
-            <span>Settings</span>
-          </Link>
-          {/* Link to My Profile page */}
-          <Link to="/profile" className="item">
-            <img src={Watch} alt="" />
-            <span>My Profile</span>
-          </Link>
-          {/* Link to Terms and Conditions page */}
-          <Link to="/terms" className="item">
-            <img src={Memories} alt="" />
-            <span>Terms and Conditions</span>
-          </Link>
         </div>
-        <hr />
-        <div className="menu">
-          <span>Your shortcuts</span>
-          {/* Link to Events page */}
-          <Link to="/event" className="item">
-            <img src={Events} alt="" />
-            <span>Events</span>
-          </Link>
-          {/* Link to Blood Donation page */}
-          <Link to="/blood-donation" className="item">
-            <img src={Gaming} alt="" />
-            <span>Blood Donations</span>
-          </Link>
-          {/* Link to Articles page */}
-          <Link to="/article" className="item">
-            <img src={Gallery} alt="" />
-            <span>Articles</span>
-          </Link>
-        </div>
-        <hr />
-        <div className="menu">
-          <span>Others</span>
-          {/* Link to Fundraiser page */}
-          <Link to="/fundraiser" className="item">
-            <img src={Fund} alt="" />
-            <span>Fundraiser</span>
-          </Link>
-          {/* Link to Tutorials page */}
-          <Link to="/tutorials" className="item">
-            <img src={Tutorials} alt="" />
-            <span>Tutorials</span>
-          </Link>
-          {/* Link to Courses page */}
-          <Link to="/courses" className="item">
-            <img src={Courses} alt="" />
-            <span>Courses</span>
-          </Link>
-        </div>
+        {entireTray.map((tray) => (
+          <div>
+            <div className="menu">
+              <span>{tray.name}</span>
+              {tray.elements.map((link, index) => (
+                <Link key={index} to={link.to} className="item">
+                  <img src={link.src} alt={link.name} />
+                  <span>{link.name}</span>
+                </Link>
+              ))}
+            </div>
+            <hr />
+          </div>
+        ))}
       </div>
     </div>
   );
